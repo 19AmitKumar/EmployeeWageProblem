@@ -10,15 +10,18 @@ namespace EmployeeWage
     internal class Employee
     {
         const int wagePerHour = 20, isPresent = 0, isPartTime = 1, isFullTime = 2;
-        const int noOfWorkingDays = 2;
-        int fullDayHour = 0, totalEmpWage = 0;
+        const int noOfWorkingDays = 2,maxHourInMonth=10;
+        int fullDayHour = 0,totalEmpHours=0, totalEmpWage = 0,totalWorkingDays=0;
 
 
         public void Attendance()
         {
-            Random random = new Random();
-            int empCheck = random.Next(0, 3);
-            for (int day = 0; day < noOfWorkingDays; day++) {
+            while (totalEmpHours <= maxHourInMonth && totalWorkingDays < noOfWorkingDays )
+            {
+                totalWorkingDays++;
+                Random random = new Random();
+                int empCheck = random.Next(0, 3);
+                
                 switch (empCheck)
                 {
                     case isFullTime:
@@ -34,11 +37,11 @@ namespace EmployeeWage
                         fullDayHour = 0;
                         break;
                 }
-                int empWage = fullDayHour * wagePerHour;
-                totalEmpWage += empWage;
-                Console.WriteLine("Daily wage is: " + empWage);
+                totalEmpHours += fullDayHour;
+                Console.WriteLine("Days: "+totalWorkingDays+"Emp Hrs: "+fullDayHour);
             }
-            Console.WriteLine("Total Emp wage: " + totalEmpWage);
+            totalEmpWage += fullDayHour;
+            Console.WriteLine("Total Emp wage: "+totalEmpWage);
 
     } 
     
