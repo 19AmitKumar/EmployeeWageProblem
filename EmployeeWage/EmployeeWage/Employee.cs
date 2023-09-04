@@ -16,22 +16,21 @@ namespace EmployeeWage
         public void Attendance()
         {
             Random random = new Random();
-            int empCheck=random.Next(0, 2);
-             if (empCheck == isPartTime)
+            int empCheck=random.Next(0, 3);
+             switch (empCheck)
             {
-                Console.WriteLine("Employee is Present.");
-                fullDayHour = 4;
-            }
-            else if (empCheck == isFullTime)
-            {
+                case isFullTime:
                 Console.WriteLine("Employee is Present.");
                 fullDayHour = 8;
-            }
-           
-            else
-            {
+                    break;
+                case isPartTime:
+                Console.WriteLine("Employee is Present.");
+                fullDayHour = 4;
+                    break;
+                default:
                 Console.WriteLine("Employee is Absent.");
                 fullDayHour = 0;
+                   break;
             }
             int empWage = fullDayHour * wagePerHour;
             Console.WriteLine("Daily wage is: "+empWage);
