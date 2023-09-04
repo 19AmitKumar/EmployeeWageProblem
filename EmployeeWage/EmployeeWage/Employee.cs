@@ -9,7 +9,7 @@ namespace EmployeeWage
 {
     internal class Employee
     {
-        const int wagePerHour = 20, isPresent = 0, isFullTime = 1;
+        const int wagePerHour = 20, isPresent = 0,isPartTime=1, isFullTime = 2;
         int fullDayHour = 0;
 
 
@@ -17,11 +17,17 @@ namespace EmployeeWage
         {
             Random random = new Random();
             int empCheck=random.Next(0, 2);
-            if (empCheck == isFullTime)
+             if (empCheck == isPartTime)
+            {
+                Console.WriteLine("Employee is Present.");
+                fullDayHour = 4;
+            }
+            else if (empCheck == isFullTime)
             {
                 Console.WriteLine("Employee is Present.");
                 fullDayHour = 8;
             }
+           
             else
             {
                 Console.WriteLine("Employee is Absent.");
