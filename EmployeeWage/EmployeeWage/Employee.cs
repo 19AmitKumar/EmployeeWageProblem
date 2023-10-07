@@ -10,15 +10,25 @@ namespace EmployeeWage
     internal class Employee
     {
         public const int  isPresent = 0, isPartTime = 1, isFullTime = 2;
-        
-
-
-        public static int Attendance(string company, int wagePerHour,int noOfWorkingDays,
+        public string company;
+        public int wagePerHour;
+        public int noOfWorkingDays;
+        public int maxHoursPerMonth;
+        public int totalEmpWage;
+        public Employee(string company, int wagePerHour, int noOfWorkingDays,
             int maxHourInMonth)
+        {
+            this.company = company;
+            this.wagePerHour = wagePerHour;
+            this.noOfWorkingDays = noOfWorkingDays;
+            this.maxHoursPerMonth = maxHourInMonth;
+            
+        }
+        public void Attendance()
         { 
-        int empHrs=0,totalEmpHours = 0, totalEmpWage, totalWorkingDays = 0;
+        int empHrs=0,totalEmpHours = 0, totalWorkingDays = 0;
         
-            while (totalEmpHours <= maxHourInMonth && totalWorkingDays < noOfWorkingDays )
+            while (totalEmpHours <= this.maxHoursPerMonth && totalWorkingDays < this.noOfWorkingDays )
             {
                 totalWorkingDays++;
                 Random random = new Random();
@@ -42,11 +52,13 @@ namespace EmployeeWage
                 totalEmpHours +=empHrs;
                 Console.WriteLine("Days:" + totalWorkingDays+" Emp Hrs: "+empHrs);
             }
-            totalEmpWage = totalEmpHours*wagePerHour;
+            totalEmpWage = totalEmpHours*this.wagePerHour;
             Console.WriteLine("Total Emp wage for company: " + company + " is " + +totalEmpWage);
-            return totalEmpWage;
-
     } 
+        public string toString()
+        {
+            return "Total Emp Wage for company : " + this.company+ " is : "+this.totalEmpWage;
+        }
     
     }
 }
