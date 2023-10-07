@@ -10,8 +10,9 @@ namespace EmployeeWage
     {
         static void Main(string[] args)
         {
-            Employee employee = new Employee();
-            employee.Attendance();
+            
+            Employee.Attendance("DMart",20,2,10);
+            Employee.Attendance("Reliance",20,2,10);
 
 
             Console.ReadLine();

@@ -9,13 +9,15 @@ namespace EmployeeWage
 {
     internal class Employee
     {
-        const int wagePerHour = 20, isPresent = 0, isPartTime = 1, isFullTime = 2;
-        const int noOfWorkingDays = 2,maxHourInMonth=10;
-        int fullDayHour = 0,totalEmpHours=0, totalEmpWage,totalWorkingDays=0;
+        public const int  isPresent = 0, isPartTime = 1, isFullTime = 2;
+        
 
 
-        public int Attendance()
-        {
+        public static int Attendance(string company, int wagePerHour,int noOfWorkingDays,
+            int maxHourInMonth)
+        { 
+        int empHrs=0,totalEmpHours = 0, totalEmpWage, totalWorkingDays = 0;
+        
             while (totalEmpHours <= maxHourInMonth && totalWorkingDays < noOfWorkingDays )
             {
                 totalWorkingDays++;
@@ -26,22 +28,22 @@ namespace EmployeeWage
                 {
                     case isFullTime:
                         Console.WriteLine("Employee is Present.");
-                        fullDayHour = 8;
+                        empHrs = 8;
                         break;
                     case isPartTime:
                         Console.WriteLine("Employee is Present.");
-                        fullDayHour = 4;
+                        empHrs = 4;
                         break;
                     default:
                         Console.WriteLine("Employee is Absent.");
-                        fullDayHour = 0;
+                        empHrs = 0;
                         break;
                 }
-                totalEmpHours +=fullDayHour;
-                Console.WriteLine("Days:" + totalWorkingDays+" Emp Hrs: "+fullDayHour);
+                totalEmpHours +=empHrs;
+                Console.WriteLine("Days:" + totalWorkingDays+" Emp Hrs: "+empHrs);
             }
             totalEmpWage = totalEmpHours*wagePerHour;
-            Console.WriteLine("Total Emp wage: "+totalEmpWage);
+            Console.WriteLine("Total Emp wage for company: " + company + " is " + +totalEmpWage);
             return totalEmpWage;
 
     } 
