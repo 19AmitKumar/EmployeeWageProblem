@@ -11,10 +11,10 @@ namespace EmployeeWage
     {
         const int wagePerHour = 20, isPresent = 0, isPartTime = 1, isFullTime = 2;
         const int noOfWorkingDays = 2,maxHourInMonth=10;
-        int fullDayHour = 0,totalEmpHours=0, totalEmpWage = 0,totalWorkingDays=0;
+        int fullDayHour = 0,totalEmpHours=0, totalEmpWage,totalWorkingDays=0;
 
 
-        public void Attendance()
+        public int Attendance()
         {
             while (totalEmpHours <= maxHourInMonth && totalWorkingDays < noOfWorkingDays )
             {
@@ -37,11 +37,12 @@ namespace EmployeeWage
                         fullDayHour = 0;
                         break;
                 }
-                totalEmpHours += fullDayHour;
-                Console.WriteLine("Days: "+totalWorkingDays+"Emp Hrs: "+fullDayHour);
+                totalEmpHours +=fullDayHour;
+                Console.WriteLine("Days:" + totalWorkingDays+" Emp Hrs: "+fullDayHour);
             }
-            totalEmpWage += fullDayHour;
+            totalEmpWage = totalEmpHours*wagePerHour;
             Console.WriteLine("Total Emp wage: "+totalEmpWage);
+            return totalEmpWage;
 
     } 
     
